@@ -6,6 +6,7 @@ return {
       "nvim-telescope/telescope-fzf-native.nvim",
       build = "make",
     },
+    "nvim-telescope/telescope-ui-select.nvim",
   },
   config = function()
     local telescope = require("telescope")
@@ -20,6 +21,11 @@ return {
           selection_caret = "▍ ",
         },
       },
+      extensions = {
+        ["ui-select"] = {
+          require("telescope.themes").get_dropdown({}),
+        },
+      },
     })
 
     vim.api.nvim_create_autocmd({ "ColorScheme", "BufAdd", "FileType" }, {
@@ -32,6 +38,7 @@ return {
     })
 
     pcall(telescope.load_extension, "fzf")
+    pcall(telescope.load_extension, "ui-select")
 
     vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
     vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>")

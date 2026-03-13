@@ -20,5 +20,7 @@ return {
     vim.lsp.config.omnisharp = { capabilities = capabilities }
 
     vim.lsp.enable({ "vtsls", "html", "cssls", "emmet_language_server", "omnisharp" })
+
+    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP code action" })
   end,
 }

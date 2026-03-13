@@ -1,6 +1,10 @@
 return {
   "nvim-tree/nvim-tree.lua",
   dependencies = { "DaikyXendo/nvim-material-icon" },
+  init = function()
+    vim.g.loaded_netrw = 1
+    vim.g.loaded_netrwPlugin = 1
+  end,
   config = function()
     require("nvim-tree").setup({
       view = { side = "right" },
@@ -119,8 +123,6 @@ return {
       end,
     })
 
-    vim.g.loaded_netrw = 1
-    vim.g.loaded_netrwPlugin = 1
     vim.keymap.set("n", "<c-n>", ":NvimTreeFindFileToggle<CR>")
   end,
 }
