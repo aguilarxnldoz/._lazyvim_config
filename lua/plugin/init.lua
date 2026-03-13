@@ -1,6 +1,7 @@
 return {
   {
-    "olimorris/onedarkpro.nvim",
+    "uhs-robert/oasis.nvim",
+    lazy = false,
     priority = 1000,
   },
   {
@@ -19,6 +20,17 @@ return {
     config = function()
       require("nvim-tree").setup({
         view = { side = "right" },
+        filters = { custom = { ".DS_Store" } },
+        git = { enable = true, ignore = false, timeout = 400 },
+        diagnostics = {
+          enable = true,
+          show_on_dirs = true,
+          icons = { hint = "H", info = "I", warning = "W", error = "E" },
+        },
+        renderer = {
+          highlight_git = true,
+          icons = { show = { git = true } },
+        },
       })
       vim.keymap.set("n", "<c-n>", ":NvimTreeFindFileToggle<CR>")
     end,
@@ -27,7 +39,7 @@ return {
   { "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     config = function()
-      require("nvim-treesitter").setup({
+      require("nvim-treesitter.configs").setup({
         ensure_installed = { "lua", "vim", "vimdoc", "javascript", "typescript", "python", "html", "css", "c_sharp" },
         highlight = { enable = true },
         indent = { enable = true },
