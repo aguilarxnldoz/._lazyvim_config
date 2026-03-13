@@ -27,9 +27,11 @@ return {
   { "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     config = function()
-      require("nvim-treesitter.config").setup({
+      require("nvim-treesitter").setup({
         ensure_installed = { "lua", "vim", "vimdoc", "javascript", "typescript", "python", "html", "css", "c_sharp" },
         highlight = { enable = true },
+        indent = { enable = true },
+        autotag = { enable = true },
       })
     end,
   },
@@ -210,23 +212,21 @@ return {
   {
     "lukas-reineke/indent-blankline.nvim",
     event = "BufReadPre",
-    config = function()
-      require("indent_blankline").setup {
-        char = "│",
-        show_current_context = true,
-        show_current_context_start = true,
-        buftype_exclude = { "terminal" },
-        filetype_exclude = { "help", "terminal", "dashboard" },
-      }
-    end,
+    main = "ibl",
+    opts = {
+      indent = { char = "│" },
+      scope = { enabled = true, show_start = true, show_end = true },
+      exclude = {
+        filetypes = { "help", "terminal", "dashboard" },
+        buftypes = { "terminal" },
+      },
+    },
   },
   {
     "windwp/nvim-ts-autotag",
     event = "BufReadPre",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
     config = function()
-      require("nvim-treesitter.configs").setup({
-        autotag = { enable = true },
-      })
       require("nvim-ts-autotag").setup {}
     end,
   },
