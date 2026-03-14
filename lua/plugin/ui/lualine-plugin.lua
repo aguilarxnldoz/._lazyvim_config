@@ -1,6 +1,8 @@
 return {
   "nvim-lualine/lualine.nvim",
   config = function()
+    local crimson = "#DC143C"
+
     require("lualine").setup({
       options = {
         icons_enabled = true,
@@ -16,6 +18,13 @@ return {
           {
             "filename",
             path = 1,
+            color = { bg = crimson },
+          },
+        },
+        lualine_z = {
+          {
+            "location",
+            color = { bg = crimson },
           },
         },
       },
@@ -24,12 +33,16 @@ return {
           {
             "filename",
             path = 1,
+            color = { bg = crimson },
           },
         },
         lualine_z = {
-          function()
-            return os.date("%H:%M:%S")
-          end,
+          {
+            function()
+              return os.date("%H:%M:%S")
+            end,
+            color = { bg = crimson },
+          },
         },
       },
     })
