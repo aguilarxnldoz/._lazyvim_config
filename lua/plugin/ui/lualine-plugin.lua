@@ -20,7 +20,7 @@ return {
     local function clock_component()
       return {
         function()
-          return os.date("%H:%M:%S")
+          return "🕒 " .. os.date("%I:%M:%S %p")
         end,
         color = { bg = crimson },
       }
@@ -48,7 +48,11 @@ return {
         lualine_a = { "mode", filename_component() },
         lualine_b = { "branch", "diff", "diagnostics" },
         lualine_c = {},
-        lualine_x = { "encoding", "fileformat", "filetype" },
+        lualine_x = {
+          "encoding",
+          { "fileformat", symbols = { unix = "", mac = "" } },
+          "filetype",
+        },
         lualine_y = { "progress" },
         lualine_z = { location_component(), clock_component() },
       },
