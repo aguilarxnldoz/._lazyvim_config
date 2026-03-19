@@ -17,7 +17,7 @@ return {
       },
       renderer = {
         highlight_git = true,
-        icons = { show = { git = true } },
+        icons = { show = { git = true, diagnostics = true } },
       },
     })
 
