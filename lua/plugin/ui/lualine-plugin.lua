@@ -37,14 +37,6 @@ return {
         },
       },
       sections = {
-        lualine_a = {},
-        lualine_b = {},
-        lualine_c = {},
-        lualine_x = {},
-        lualine_y = {},
-        lualine_z = {},
-      },
-      tabline = {
         lualine_a = { "mode", filename_component() },
         lualine_b = { "branch", "diff", "diagnostics" },
         lualine_c = {},
@@ -55,6 +47,14 @@ return {
         },
         lualine_y = { "progress" },
         lualine_z = { location_component(), clock_component() },
+      },
+      tabline = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = {},
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = {},
       },
     })
   end,

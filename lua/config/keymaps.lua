@@ -1,7 +1,7 @@
 vim.opt.backspace = "2"
 vim.opt.showcmd = true
-vim.opt.laststatus = 0
-vim.opt.showtabline = 2
+vim.opt.laststatus = 3
+vim.opt.showtabline = 0
 vim.opt.display:append("msgsep")
 vim.opt.autowrite = true
 vim.opt.cursorline = true
