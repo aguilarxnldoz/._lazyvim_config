@@ -23,6 +23,7 @@ local function apply()
     NormalFloat = palette.fg,
     FloatBorder = palette.blue,
     FloatTitle = palette.blue,
+    MsgArea = "#F93943",
     MsgSeparator = palette.crimson,
     CursorLineNr = palette.white,
     LineNr = palette.black,
