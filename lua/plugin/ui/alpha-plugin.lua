@@ -139,9 +139,6 @@ return {
 			[[                                                                       ]],
 		}
 
-		dashboard.section.mru_cwd.val[2].opts.hl = "AlphaMru"
-		dashboard.section.mru.val[2].opts.hl = "AlphaMru"
-
 		set_section_center(dashboard.section.top_buttons)
 		set_section_center(dashboard.section.bottom_buttons)
 		set_section_center(dashboard.section.mru)
@@ -161,13 +158,49 @@ return {
 			return mru_group
 		end
 
-		dashboard.section.mru.val[4].val = function()
-			return { mru_with_centered_shortcuts(10) }
+		local function configure_mru_section(section, mru_builder)
+			if type(section) ~= "table" then
+				return
+			end
+
+			local function decorate(items)
+				if type(items) ~= "table" then
+					return items
+				end
+
+				local title = items[2]
+				if type(title) == "table" then
+					title.opts = title.opts or {}
+					title.opts.hl = "AlphaMru"
+				end
+
+				local mru_group = items[4]
+				if type(mru_group) == "table" then
+					mru_group.val = mru_builder
+					mru_group.opts = mru_group.opts or {}
+					mru_group.opts.inherit = vim.tbl_extend("force", mru_group.opts.inherit or {}, { position = "center" })
+				end
+
+				return items
+			end
+
+			if type(section.val) == "table" then
+				decorate(section.val)
+			elseif type(section.val) == "function" then
+				local original_val = section.val
+				section.val = function()
+					return decorate(original_val())
+				end
+			end
 		end
 
-		dashboard.section.mru_cwd.val[4].val = function()
+		configure_mru_section(dashboard.section.mru, function()
+			return { mru_with_centered_shortcuts(10) }
+		end)
+
+		configure_mru_section(dashboard.section.mru_cwd, function()
 			return { mru_with_centered_shortcuts(0, vim.fn.getcwd()) }
-		end
+		end)
 
 		alpha.setup(dashboard.opts)
 	end,

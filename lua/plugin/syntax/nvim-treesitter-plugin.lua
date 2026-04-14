@@ -4,7 +4,7 @@ return {
   build = ":TSUpdate",
   config = function()
     local treesitter_opts = {
-      ensure_installed = { "lua", "vim", "vimdoc", "javascript", "typescript", "python", "html", "css", "c_sharp" },
+      ensure_installed = { "lua", "vim", "vimdoc", "javascript", "typescript", "tsx", "python", "html", "css", "c_sharp" },
       highlight = { enable = true },
       indent = { enable = true },
     }

@@ -1,8 +1,9 @@
 return {
   "nvim-lualine/lualine.nvim",
   config = function()
-    local crimson = "#DC143C"
-    local treesitter_red = crimson
+    local terminal_red = "#ff5555"
+    local treesitter_red = terminal_red
+    local crimson = terminal_red
 
     local lualine_theme = vim.deepcopy(require("lualine.themes.oasis"))
     local modes = { "normal", "insert", "visual", "replace", "command", "terminal", "inactive" }
