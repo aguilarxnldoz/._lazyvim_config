@@ -44,6 +44,10 @@ return {
       vim.api.nvim_set_hl(0, "NvimTreeEmptyFolderName", color)
       vim.api.nvim_set_hl(0, "NvimTreeSymlinkFolderName", color)
       vim.api.nvim_set_hl(0, "NvimTreeRootFolder", color)
+      vim.api.nvim_set_hl(0, "NvimTreeWinSeparator", color)
+      vim.api.nvim_set_hl(0, "NvimTreeVertSplit", color)
+      vim.api.nvim_set_hl(0, "WinSeparator", color)
+      vim.api.nvim_set_hl(0, "VertSplit", color)
     end
 
     local function set_nvim_tree_git_and_diagnostic_highlights()
