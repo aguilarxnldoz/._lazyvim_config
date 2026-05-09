@@ -18,8 +18,12 @@ return {
       filetypes = { "html", "css", "scss", "less", "javascriptreact", "typescriptreact" },
     }
     vim.lsp.config.omnisharp = { capabilities = capabilities }
+    vim.lsp.config.clangd = {
+      capabilities = capabilities,
+      filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
+    }
 
-    vim.lsp.enable({ "vtsls", "html", "cssls", "emmet_language_server", "omnisharp" })
+    vim.lsp.enable({ "vtsls", "html", "cssls", "emmet_language_server", "omnisharp", "clangd" })
 
     vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP code action" })
   end,
